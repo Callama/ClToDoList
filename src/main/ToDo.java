@@ -1,26 +1,62 @@
 package main;
 
-
-@SuppressWarnings("unused")
+import java.util.Scanner;
 
 public class ToDo {
-public static void main(String[] args) {
+    public static void main(String[] args) {
 
-    ToDoList items = new ToDoList(3);
+    System.out.println("How many to-do list items would you like to create? (This will be the maximum allowed.)");
+    Scanner keyboard = new Scanner(System.in);
 
-    items.newItem("lol", "now");
-    items.newItem("x", "yo");
-    items.newItem("y", "bbbo");
+    int length = keyboard.nextInt();
+    if (length <= 0) {
+        System.out.println("Error: Length must be greater than 0.");
+        System.exit(0);
+    }
+    int itemsMade = 0;
 
 
-   
-    ToDoItem.finish(items.getItem(3));
-    ToDoItem.finish(items.getItem(-10000));
-    items.print();
+    ToDoList items = new ToDoList(length);
 
-    items.newItem("y", "bbbo");
-    
+    String message, dueDate;
+
+    do { 
+
+        System.out.println("Enter to-do list item (-1 in any field to quit) #" + (itemsMade + 1) + "\nMessage:");
+
+        message = keyboard.next();
+        if (message.equals("-1"))
+            break;
+
+        System.out.println("Due Date: ");
+        dueDate = keyboard.next();
+        if (dueDate.equals("-1"))
+            break;
+       
+
+        items.newItem(message, dueDate);
+        itemsMade++;
+
+        ToDoItem.print(items.getItem(itemsMade));
+
+    } while (length > itemsMade); 
+
+    int unFinishedItems = itemsMade;
+
+    while (unFinishedItems >= itemsMade) {
+        System.out.println("Which have you finished?");
+        int finished = keyboard.nextInt();
+
+        ToDoItem.finish(items.getItem(finished));
+        unFinishedItems--;
     }
 
     
+    items.print();
+    
+
+
+        
+    }
+
 }

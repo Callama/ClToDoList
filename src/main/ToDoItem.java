@@ -1,8 +1,6 @@
 package main;
 
 
-@SuppressWarnings("unused")
-
 public class ToDoItem {
 
     public int id;
@@ -21,7 +19,7 @@ public class ToDoItem {
     /** A constructor to create a new to-do item with all information. */
     public ToDoItem(int initialID, String initialMessage, String initialDue) {
         message = initialMessage;
-        due = "Not Set";
+        due = initialDue;
         isCompleted = false;
         id = initialID;
     }
@@ -33,6 +31,11 @@ public class ToDoItem {
             checkmark = "X";
         int tempId = id + 1;
         System.out.println(tempId + ".) [ " + checkmark + " ] - " + message + " --- Due: " + due);
+
+    }
+
+    public static void print(ToDoItem item) {
+        item.print();
 
     }
 

@@ -1,6 +1,6 @@
 package main;
 
-@SuppressWarnings("unused")
+
 public class ToDoList {
 
     private int length = 0;
@@ -20,6 +20,8 @@ public class ToDoList {
             items[n].print();
         }
     }
+
+
     /** Make a new to-do item and add it to the list */
     public void newItem(String message, String due) {
         totalItems += 1;
