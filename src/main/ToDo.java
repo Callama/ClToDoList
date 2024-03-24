@@ -6,7 +6,7 @@ public class ToDo {
     public static void main(String[] args) {
 
     System.out.println("How many to-do list items would you like to create? (This will be the maximum allowed.)");
-    Scanner keyboard = new Scanner(System.in);
+    Scanner keyboard = new Scanner(System.in).useDelimiter("\\n");
 
     int length = keyboard.nextInt();
     if (length <= 0) {
@@ -29,6 +29,7 @@ public class ToDo {
             break;
 
         System.out.println("Due Date: ");
+       
         dueDate = keyboard.next();
         if (dueDate.equals("-1"))
             break;
@@ -41,7 +42,9 @@ public class ToDo {
 
     } while (length > itemsMade); 
 
+    items.print();
     int unFinishedItems = itemsMade;
+
 
     while (unFinishedItems >= itemsMade) {
         System.out.println("Which have you finished?");
