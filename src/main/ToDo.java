@@ -1,7 +1,7 @@
 package main;
 
-import java.util.Scanner;
 
+@SuppressWarnings("unused")
 
 public class ToDo {
 public static void main(String[] args) {
@@ -15,7 +15,10 @@ public static void main(String[] args) {
 
    
     ToDoItem.finish(items.getItem(3));
+    ToDoItem.finish(items.getItem(-10000));
     items.print();
+
+    items.newItem("y", "bbbo");
     
     }
 

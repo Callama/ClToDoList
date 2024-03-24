@@ -1,5 +1,8 @@
 package main;
 
+
+@SuppressWarnings("unused")
+
 public class ToDoItem {
 
     public int id;
@@ -7,6 +10,7 @@ public class ToDoItem {
     private String due;
     private boolean isCompleted;
 
+    /** A constructor to create a new to-do item with just an initial ID. */
     public ToDoItem(int initialID) {
         message = "None";
         due = "Not Set";
@@ -14,7 +18,7 @@ public class ToDoItem {
         id = initialID;
 
     }
-
+    /** A constructor to create a new to-do item with all information. */
     public ToDoItem(int initialID, String initialMessage, String initialDue) {
         message = initialMessage;
         due = "Not Set";
@@ -22,7 +26,7 @@ public class ToDoItem {
         id = initialID;
     }
 
-
+    /** Print out the actual to-do item. */
     public void print() {
         String checkmark = " ";
         if (isCompleted)
@@ -32,12 +36,14 @@ public class ToDoItem {
 
     }
 
+    /** non-static method to finish an item and mark completed. */
     public void finish() {
         isCompleted = true;
     }
-
+    /** Static method to mark an item completed; used when dealing with the ToDoList object. */
     public static void finish(ToDoItem item) {
-        item.finish();
+        if (item != null)
+            item.finish();
     }
 
     
